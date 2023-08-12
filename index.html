@@ -1,0 +1,64 @@
+<!-- Kamaljit Kaur  2000537971 -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+  li {
+    margin-bottom: 10px;
+  }
+
+  li button {
+    font-size: 8px;
+    margin-left: 20px;
+    color: #666;
+  }</style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div class="main" >
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button id="bat" >Add item</button>
+    </div>
+
+    <ul id="unlis" >
+
+    </ul>
+
+
+<script >
+
+var userInput = document.getElementById("item");
+var but = document.getElementById("bat");
+var itemList = document.getElementById("unlis");
+
+but.addEventListener("click", function() {
+    var inputValue = userInput.value;
+    userInput.value = "";
+
+    var newItem = document.createElement("li");
+    var itemText = document.createElement("span");
+    var delbutton = document.createElement("button");
+
+    itemText.textContent = inputValue;
+    delbutton.textContent = "delete";
+
+    delbutton.addEventListener("click", function() {
+        itemList.removeChild(newItem);
+    });
+
+    newItem.appendChild(itemText);
+    newItem.appendChild(delbutton);
+    itemList.appendChild(newItem);
+
+    inputValue.focus();
+});
+</script>
+  </body>
+</html>
